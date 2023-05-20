@@ -1,0 +1,49 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.wrapper h3 {
+    color: #ad5502;
+    font-size: 22px;
+    font-style: italic;
+}
+
+.wrapper div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.wrapper p {
+    color: #767575;
+}
+
+.wrapper button {
+    font: inherit;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid #8a2b06;
+    padding: 0.5rem 2rem;
+    border-radius: 25px;
+    margin-top: 1rem;
+}
+
+.wrapper button:hover,
+.wrapper button:active {
+    background-color: #5a1a01;
+    border-color: #5a1a01;
+    color: white;
+}
+
+.wrapper .button--alt {
+    color: #8a2b06;
+}
+
+.wrapper .button {
+    background-color: #8a2b06;
+    color: white;
+}
