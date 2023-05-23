@@ -8,20 +8,21 @@ const LoginForm = (props) => {
   const [password, setPassword] = useState("");
   const [validEmail, setValidEmail] = useState("");
   const [validPassword, setValidPassword] = useState("");
+
   const changeToSignUp = (e) => {
     e.preventDefault();
-    setSignUpClicked(true);
+    setSignUpClicked((signUpClicked) => !signUpClicked);
   };
 
   const changeToSignIn = (e) => {
     e.preventDefault();
-
-    console.log("Logged");
+    setSignUpClicked((signUpClicked) => !signUpClicked);
   };
 
   const signInHandler = (e) => {
     e.preventDefault();
-    console.log("logged");
+    props.onClose();
+    props.onLogin();
   };
   const signUpHandler = () => {};
 
@@ -32,7 +33,6 @@ const LoginForm = (props) => {
       setValidEmail(true);
     } else {
       setValidEmail(false);
-      console.log("Email required");
     }
   };
 
@@ -42,7 +42,6 @@ const LoginForm = (props) => {
       setValidPassword(true);
     } else {
       setValidPassword(false);
-      console.log("Passsword required");
     }
   };
 
@@ -52,6 +51,7 @@ const LoginForm = (props) => {
     <Modal onClose={props.onClose} className={styles.wrapper}>
       {!signUpClicked && (
         <div className={styles.container}>
+          <span onClick={props.onClose}>X</span>
           <h3>Sign In</h3>
           <form className={styles.form}>
             <div>

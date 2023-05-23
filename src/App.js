@@ -7,6 +7,11 @@ import CartProvider from "./store/CartProvider";
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false);
   const [loginFormShow, setLoginFormShow] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLogin = (e) => {
+    setIsLoggedIn(true);
+  };
 
   const showCartHandler = () => {
     setCartIsShown(true);
@@ -26,8 +31,14 @@ function App() {
   return (
     <CartProvider>
       {cartIsShown && <Cart onClose={hideCartHandler} />}
-      <LoginForm onClose={hideLoginForm} />
-      <Header onShowCart={showCartHandler} onShowLogin={showLoginForm} />
+      {loginFormShow && (
+        <LoginForm onClose={hideLoginForm} onLogin={handleLogin} />
+      )}
+      <Header
+        onShowCart={showCartHandler}
+        onShowLogin={showLoginForm}
+        isLoggedIn={isLoggedIn}
+      />
       <main>
         <Meals />
       </main>
