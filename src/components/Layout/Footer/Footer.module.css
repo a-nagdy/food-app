@@ -1,0 +1,58 @@
+.main {
+    color: #e7e7e7;
+    background: #000;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 50px 30px;
+    place-items: center;
+
+}
+
+.desc,
+.address {
+    font: bold 32px fangsong, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+
+}
+
+.desc p {
+    font: normal 18px fangsong, 'Franklin Gothic Medium', "Arial";
+}
+
+.address form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    margin: 40px;
+}
+
+.desc input {
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+    position: relative;
+}
+
+
+
+.desc input:focus-visible {
+    border: none;
+    outline: none;
+}
+
+.address button {
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    background-color: rgba(77, 22, 1, 1);
+    color: white;
+    border-radius: 0 5px 5px 0;
+    padding: 11px;
+    font-size: 16px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
