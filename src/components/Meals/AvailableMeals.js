@@ -1,39 +1,58 @@
-import React, { Image } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../UI/Card";
 import styles from "./AvailableMeals.module.css";
 import MealItem from "./MealItem/MealItem";
-const DUMMY_MEALS = [
-  {
-    id: "m1",
-    name: "Sushi",
-    description: "Finest fish and veggies",
-    price: 22.99,
-    img: "../../assets/sushi-pic.jpg",
-  },
-  {
-    id: "m2",
-    name: "Schnitzel",
-    description: "A german specialty!",
-    price: 16.5,
-    img: "../../assets/sushi-pic.jpg",
-  },
-  {
-    id: "m3",
-    name: "Barbecue Burger",
-    description: "American, raw, meaty",
-    price: 12.99,
-    img: "../../assets/sushi-pic.jpg",
-  },
-  {
-    id: "m4",
-    name: "Green Bowl",
-    description: "Healthy...and green...",
-    price: 18.99,
-    img: "../../assets/sushi-pic.jpg",
-  },
-];
+
 const AvailableMeals = () => {
-  const mealsList = DUMMY_MEALS.map((meal) => (
+  const [meals, setMeals] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState();
+  useEffect(() => {
+    const fetchMeals = async () => {
+      const response = await fetch(
+        "https://my-first-project-a7aca-default-rtdb.europe-west1.firebasedatabase.app/meals.json"
+      );
+      if (!response.ok) {
+        throw new Error("Something Went Wrong!");
+      }
+      const responseData = await response.json();
+
+      const loadedMeals = [];
+      for (const key in responseData) {
+        loadedMeals.push({
+          id: key,
+          name: responseData[key].name,
+          description: responseData[key].description,
+          price: responseData[key].price,
+        });
+      }
+      setMeals(loadedMeals);
+      setIsLoading(false);
+    };
+
+    fetchMeals().catch((error) => {
+      setIsLoading(false);
+      setError(error);
+    });
+  }, []);
+
+  if (isLoading) {
+    return (
+      <section className={styles.loading}>
+        <p>Loading</p>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className={styles.error}>
+        <p>{error.message}</p>
+      </section>
+    );
+  }
+
+  const mealsList = meals.map((meal) => (
     <MealItem
       key={meal.id}
       id={meal.id}

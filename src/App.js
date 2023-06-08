@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Cart from "./components/Cart/Cart";
+import Footer from "./components/Layout/Footer/Footer";
 import Header from "./components/Layout/Header";
 import Meals from "./components/Meals/Meals";
-import Footer from "./components/Layout/Footer/Footer";
 import LoginForm from "./components/UI/LoginForm";
 import CartProvider from "./store/CartProvider";
 function App() {
@@ -43,6 +43,7 @@ function App() {
       <main>
         <Meals />
       </main>
+
       <Footer />
     </CartProvider>
   );

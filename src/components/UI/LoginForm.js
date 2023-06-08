@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import useHttp from "../../Hooks/use-http";
 import Button from "./Button";
 import styles from "./LoginForm.module.css";
 import Modal from "./Modal";
@@ -8,6 +9,28 @@ const LoginForm = (props) => {
   const [password, setPassword] = useState("");
   const [validEmail, setValidEmail] = useState("");
   const [validPassword, setValidPassword] = useState("");
+  const [tasks, setTasks] = useState([]);
+
+  const transformTasks = (tasks) => {
+    const loadedTasks = [];
+    for (const taskKey in tasks) {
+      loadedTasks.push({ id: taskKey, task: tasks[taskKey].text });
+    }
+    setTasks(loadedTasks);
+  };
+
+  const {
+    isLoading,
+    error,
+    sendRequest: fetchTasks,
+  } = useHttp({
+    url: "https://react-http-movie-f8b5a-default-rtdb.firebaseio.com/users.json",
+    transformTasks,
+  });
+
+  useEffect(() => {
+    fetchTasks();
+  }, []);
 
   const changeToSignUp = (e) => {
     e.preventDefault();
@@ -82,6 +105,7 @@ const LoginForm = (props) => {
       )}
       {signUpClicked && (
         <div className={styles.container}>
+          <span onClick={props.onClose}>X</span>
           <h3>Sign Up</h3>
           <form className={styles.form}>
             <div>

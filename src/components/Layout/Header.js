@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import mainImage from "../../assets/main-slider.jpg";
-import Button from "../UI/Button";
+// import Button from "../UI/Button";
 import styles from "./Header.module.css";
 import HeaderCartButton from "./HeaderCartButton";
 const Header = (props) => {
@@ -23,13 +23,13 @@ const Header = (props) => {
           <a href="/">Contact Us</a>
         </div>
         <div className={styles.action}>
-          {!props.isLoggedIn ? (
+          {/* {!props.isLoggedIn ? (
             <Button className={styles.button} onClick={props.onShowLogin}>
               Login
             </Button>
-          ) : (
-            <HeaderCartButton onClick={props.onShowCart} />
-          )}
+          ) : ( */}
+          <HeaderCartButton onClick={props.onShowCart} />
+          {/* )} */}
         </div>
       </header>
       <div className={styles["main-image"]}>
