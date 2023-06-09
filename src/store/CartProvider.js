@@ -51,6 +51,9 @@ const cartReducer = (state, action) => {
       totalAmount: updatedTotalAmount,
     };
   }
+  if (action.type === "CLEAR") {
+    return defaultCartState;
+  }
   return defaultCartState;
 };
 
@@ -77,7 +80,7 @@ const CartProvider = (props) => {
   const orderHandler = () => {
     setTimeout(() => {
       clearCartHandler();
-    }, 3000);
+    }, 1000);
   };
 
   const cartContext = {

@@ -44,6 +44,12 @@ const Checkout = (props) => {
     if (!formIsValid) {
       return;
     }
+    props.onConfirm({
+      name: enteredName,
+      street: enteredStreet,
+      city: enteredCity,
+      postalCode: enteredPostalCode,
+    });
   };
   const nameControlClasses = `${styles.control} ${
     formInputsValidity.name ? "" : styles.invalid
@@ -81,10 +87,12 @@ const Checkout = (props) => {
         <input type="text" id="city" ref={cityInputRef} />
         {!formInputsValidity.city && <p>please enter a valid city</p>}
       </div>
-      <button type="button" className={styles.confirm} onClick={props.onCancel}>
-        Cancel
-      </button>
-      <button className={styles.confirm}>Confirm</button>
+      <div className={styles.actions}>
+        <button type="button" onClick={props.onCancel}>
+          Cancel
+        </button>
+        <button className={styles.submit}>Confirm</button>
+      </div>
     </form>
   );
 };

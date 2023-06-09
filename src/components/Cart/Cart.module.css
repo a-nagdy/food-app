@@ -30,17 +30,128 @@
 }
 
 .actions button:hover,
-.actions button:active {
+.actions button:active,
+.button:hover,
+.button:active {
     background-color: #5a1a01;
     border-color: #5a1a01;
     color: white;
 }
 
-.actions .button--alt {
+.actions .button--alt,
+.button {
     color: #8a2b06;
 }
 
-.actions .button {
+.actions .button,
+.button {
     background-color: #8a2b06;
     color: white;
+}
+
+.success {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.button {
+    font: inherit;
+    cursor: pointer;
+    border: 1px solid #8a2b06;
+    padding: 0.5rem 2rem;
+    border-radius: 25px;
+    margin-left: 1rem;
+    align-self: flex-end;
+}
+
+/* 
+.check {
+    width: 40px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    animation: checkRotate 1s forwards;
+
+}
+
+
+.checkmark {
+    display: block;
+    height: 24px;
+    width: 12px;
+    border-bottom: 7px solid #78b13f;
+    border-right: 7px solid #78b13f;
+
+}
+
+@keyframes checkRotate {
+    0% {
+        transform: rotate(0deg);
+        border-color: #78b13f;
+        opacity: 0;
+    }
+
+    100% {
+        transform: rotate(360deg);
+        border-color: #78b13f;
+        opacity: 1;
+    }
+} */
+
+.check {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid #78b13f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    animation: checkDraw .5s forwards;
+}
+
+.checkmark {
+    display: block;
+    height: 24px;
+    width: 12px;
+    border-bottom: 5px solid #78b13f;
+    border-right: 5px solid #78b13f;
+    rotate: 45deg;
+    animation: checkScale 0.3s forwards;
+}
+
+@keyframes checkScale {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes checkDraw {
+    0% {
+
+        transform: scale(0);
+    }
+
+    50% {
+
+        transform: scale(1.2);
+    }
+
+    100% {
+
+        transform: scale(1);
+    }
 }
